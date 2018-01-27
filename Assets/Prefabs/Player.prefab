@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212484452440538020}
   - component: {fileID: 50064496176342456}
   - component: {fileID: 61367083120436260}
+  - component: {fileID: 114729295684281856}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -35,8 +36,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1963599143608614}
-  m_LocalRotation: {x: 0, y: 0, z: 0.0000019817012, w: 1}
-  m_LocalPosition: {x: -4.859991, y: -0.3801118, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.35, y: -0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,6 +88,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.78, y: 3.26}
   m_EdgeRadius: 0
+--- !u!114 &114729295684281856
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963599143608614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb209f71a3fab3740b6283f4a8598271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerNumber: 1
 --- !u!212 &212484452440538020
 SpriteRenderer:
   m_ObjectHideFlags: 1
