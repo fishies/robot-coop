@@ -7,18 +7,48 @@ public class TransmissionController : MonoBehaviour {
 
 	public GameObject SourcePlayer;
 	public float time = 0;
-	public float speed = 10;
+	public float speed = 1f;
+	public Color color = Color.green;
+
 	LineRenderer line;
-	int segments = 50;
+
+	static int segments = 50;
+	static Vector3[] m_UnitCircle;
+	static Vector3[] UnitCircle {
+		get {
+			if (null == m_UnitCircle)
+				InitUnitCircle ();
+			return m_UnitCircle;
+		}
+	}
+	static void InitUnitCircle()
+	{
+		float x;
+		float y;
+		float radiansPerSegment = 2 * Mathf.PI / (segments+1);
+		List<Vector3> points = new List<Vector3> ();
+
+		for (int i = 0; i <= segments; i++)
+		{
+			float angle = i * radiansPerSegment;
+			x = Mathf.Cos (angle);
+			y = Mathf.Sin (angle);
+
+			points.Add(new Vector3(x,y,-1));
+		}
+		m_UnitCircle = points.ToArray ();
+	}
 
 	public UnityEvent transmittedEvent;
 
 	void Start ()
 	{
 		line = gameObject.GetComponent<LineRenderer>();
-
-		//line.SetVertexCount (segments + 1);
+		line.positionCount = segments+1;
 		line.loop = true;
+		line.widthMultiplier = .1f;
+		line.startColor = line.endColor = color;
+
 		//line.useWorldSpace = false;
 		//CreatePoints ();
 	}
@@ -29,37 +59,22 @@ public class TransmissionController : MonoBehaviour {
 		if (time == 0)
 			time = Time.time;
 
-		// Loop every 10 seconds for testing
+		// Loop for testing
 		if (Time.time - time > 10)
-			time = Time.time;
-		
-		CreatePoints ();
+			Destroy (gameObject);
+
+		UpdatePoints ();
 	}
 
-	void CreatePoints ()
+	void UpdatePoints ()
 	{
-		float x;
-		float y;
-		float z;
+		Vector3[] points = new Vector3[segments+1];
+		float radius = speed * (Time.time - time);
 
-		float angle = 20f;
+		Vector3[] unitCircle = UnitCircle;
+		for (int i = 0; i < points.Length; ++i)
+			points [i] = transform.position + unitCircle [i] * radius;
 
-		List<Vector3> points = new List<Vector3> ();
-
-		float xradius, yradius;
-		xradius = yradius = speed * (Time.time - time);
-
-		for (int i = 0; i < (segments + 1); i++)
-		{
-			x = Mathf.Sin (Mathf.Deg2Rad * angle) * xradius;
-			z = Mathf.Cos (Mathf.Deg2Rad * angle) * yradius;
-
-			points.Add(transform.position + new Vector3(x,0,z));
-
-			angle += (360f / segments);
-		}
-
-		line.SetPositions (points.ToArray ());
+		line.SetPositions (points);
 	}
-	
 }
