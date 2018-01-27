@@ -3,6 +3,8 @@
 !*.gitattributes
 !*Readme.md
 !Assets/
-!Assets/**
+!Assets/**/
+!Assets/**/*
 !ProjectSettings/
-!ProjectSettings/**
+!ProjectSettings/**/
+!ProjectSettings/**/*
