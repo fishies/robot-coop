@@ -281,7 +281,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 159883637}
   m_LocalRotation: {x: 0, y: 0, z: 0.0014286034, w: 0.999999}
-  m_LocalPosition: {x: -0.26608503, y: 0.25083315, z: -0.008}
+  m_LocalPosition: {x: 0.01926905, y: 0.48189437, z: -0.008}
   m_LocalScale: {x: 0.62, y: 0.78, z: 1}
   m_Children: []
   m_Father: {fileID: 1037140343}
@@ -423,8 +423,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 176396597}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000022399634, y: 0.6874398, z: 0}
-  m_LocalScale: {x: 1.4435294, y: 1.4435294, z: 1}
+  m_LocalPosition: {x: -0.00000015308026, y: 0.46979997, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1826953798}
   m_RootOrder: 0
@@ -1213,9 +1213,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 877447395}
-  m_LocalRotation: {x: 0, y: 0, z: -0.99638164, w: -0.08499207}
-  m_LocalPosition: {x: -1.2458239, y: -0.9357223, z: -0.007}
-  m_LocalScale: {x: 0.62341183, y: 0.77727586, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.0014286034, w: 0.999999}
+  m_LocalPosition: {x: 0.8433972, y: -0.6922196, z: -0.007}
+  m_LocalScale: {x: 0.62, y: 0.78, z: 1}
   m_Children: []
   m_Father: {fileID: 1037140343}
   m_RootOrder: 7
@@ -1466,9 +1466,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1032752536}
-  m_LocalRotation: {x: 0, y: 0, z: -0.9522012, w: 0.30547163}
-  m_LocalPosition: {x: -1.310883, y: -0.43143308, z: 0}
-  m_LocalScale: {x: 0.6622802, y: 0.744436, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.0014286034, w: 0.999999}
+  m_LocalPosition: {x: -0.7984994, y: -0.6674154, z: 0}
+  m_LocalScale: {x: 0.62, y: 0.78, z: 1}
   m_Children: []
   m_Father: {fileID: 1037140343}
   m_RootOrder: 0
@@ -1636,7 +1636,7 @@ MonoBehaviour:
   armatureName: Armature
   isUGUI: 0
   debugDraw: 0
-  animationName: drill
+  animationName: idle
   _playTimes: 0
   _timeScale: 1
   _sortingMode: 0
@@ -2014,7 +2014,7 @@ MonoBehaviour:
   armatureName: Armature
   isUGUI: 0
   debugDraw: 0
-  animationName: drill
+  animationName: walk
   _playTimes: 0
   _timeScale: 1
   _sortingMode: 0
