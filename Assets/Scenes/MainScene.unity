@@ -805,7 +805,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4148086076313558, guid: 1fbe93baad1a73e4faa13d3b1a925919, type: 2}
       propertyPath: m_LocalScale.x
-      value: -0.28
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 4148086076313558, guid: 1fbe93baad1a73e4faa13d3b1a925919, type: 2}
       propertyPath: m_LocalScale.y
@@ -834,6 +834,11 @@ Prefab:
         type: 2}
       propertyPath: m_Size.x
       value: 1.482
+      objectReference: {fileID: 0}
+    - target: {fileID: 114729295684281856, guid: 1fbe93baad1a73e4faa13d3b1a925919,
+        type: 2}
+      propertyPath: MirrorHack
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 212484452440538020, guid: 1fbe93baad1a73e4faa13d3b1a925919, type: 2}
