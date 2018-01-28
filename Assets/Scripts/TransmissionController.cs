@@ -121,6 +121,9 @@ public class TransmissionController : MonoBehaviour {
 		}
 
 		UpdateRingMesh (TransmissionDistance());
+
+		MeshRenderer renderer = GetComponent<MeshRenderer> ();
+		renderer.material.color = color;
 	}
 
 	public float TransmissionDistance()

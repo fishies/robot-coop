@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
 	public string HorizontalAxisControl = "Horizontal";
 	public string JumpButtonControl = "Jump";
 	public string DrillButtonControl = "Drill";
+	public Color TransmissionColor = Color.green;
 
 	// Use this for initialization
 	void Start () {
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour {
 			GameObject t = Instantiate (Transmission, transform.position, Quaternion.identity);
 			TransmissionController transmissionController = t.GetComponent<TransmissionController> ();
 			transmissionController.TransmittedAction = a;
+			transmissionController.color = TransmissionColor;
 
 			TransmissionController.AddTransmissionController (transmissionController);
 		}
