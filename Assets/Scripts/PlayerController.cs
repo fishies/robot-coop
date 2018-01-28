@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour {
 	AudioSource audio;
 	public AudioClip walkSound;
 	public AudioClip jumpSound;
+	public AudioClip warpSound;
+	public AudioClip drillSound;
+	public AudioClip sendSound;
+	public AudioClip recvSound;
 
 	enum AnimationEnum
 	{
@@ -107,7 +111,9 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (Input.GetButtonDown (button)) {
 			Debug.LogFormat ("Button pressed: {0}", button);
-			GetComponent<PlayerController> ().ActivateButton (action);
+			//GetComponent<PlayerController> ().ActivateButton (action);
+
+			audio.PlayOneShot(sendSound);
 
 			Action a = new Action ();
 			a.Button = action;
@@ -136,13 +142,16 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void Drill(){
+		audio.PlayOneShot(recvSound);
+		audio.PlayOneShot(drillSound);
 	}
 
 	public void Jump(){
+		audio.PlayOneShot(recvSound);
 		if(collider.Raycast(Vector2.down,new RaycastHit2D[]{new RaycastHit2D()},collider.bounds.extents.y+0.125f) > 0)
 		{
 			rb.AddForce(Vector2.up * 320.0f);
-			audio.PlayOneShot(jumpSound);
+			audio.PlayOneShot(jumpSound,2.0f);
 		}
 	}
 }
