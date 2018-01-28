@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
 	public string DrillButtonControl = "Drill";
 	public Color TransmissionColor = Color.green;
 
-	BoxCollider2D collider;
+	Collider2D collider;
 	Rigidbody2D rb;
 
 	enum AnimationEnum
@@ -47,17 +47,17 @@ public class PlayerController : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		collider = GetComponent<BoxCollider2D>();
+		collider = GetComponent<Collider2D>();
 		rb = GetComponent<Rigidbody2D>();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		rb.velocity = new Vector2(8.0f*Input.GetAxis(HorizontalAxisControl),rb.velocity.y);
-		if (rb.velocity.x > 0)
-			transform.localScale = new Vector3 (1, 1, 1);
-		else if (rb.velocity.x < 0)
-			transform.localScale = new Vector3 (-1, 1, 1);
+		rb.velocity = new Vector2(3.0f*Input.GetAxis(HorizontalAxisControl),rb.velocity.y);
+        if (rb.velocity.x < 0)
+            transform.localScale = new Vector3(-1*Mathf.Abs(transform.localScale.x),transform.localScale.y,transform.localScale.z);
+        else if (rb.velocity.x > 0)
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x),transform.localScale.y,transform.localScale.z);
 
 		var armatureComponent = GetComponent<DragonBones.UnityArmatureComponent> ();
 		if (null != armatureComponent) {
