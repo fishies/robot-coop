@@ -53,6 +53,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00e9016be6572a4097f51cd14ed1e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SourcePlayer: {fileID: 0}
+  time: 0
+  speed: 10
+  color: {r: 0, g: 1, b: 0, a: 1}
+  transmittedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!120 &120877992189435554
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -67,7 +76,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 3f75846f6d225674e900cbed9988ab56, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

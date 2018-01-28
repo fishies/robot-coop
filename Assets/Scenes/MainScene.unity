@@ -208,6 +208,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114729295684281856, guid: 1fbe93baad1a73e4faa13d3b1a925919,
+        type: 2}
+      propertyPath: Buttons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4148086076313558, guid: 1fbe93baad1a73e4faa13d3b1a925919, type: 2}
       propertyPath: m_LocalPosition.x
       value: 5.55
@@ -249,7 +254,24 @@ Prefab:
       propertyPath: PlayerNumber
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114729295684281856, guid: 1fbe93baad1a73e4faa13d3b1a925919,
+        type: 2}
+      propertyPath: Transmission
+      value: 
+      objectReference: {fileID: 1076626150736676, guid: 2c9212b3599a72f46944a29a3ac708ae,
+        type: 2}
+    - target: {fileID: 114729295684281856, guid: 1fbe93baad1a73e4faa13d3b1a925919,
+        type: 2}
+      propertyPath: Buttons.Array.data[0]
+      value: Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 114729295684281856, guid: 1fbe93baad1a73e4faa13d3b1a925919,
+        type: 2}
+      propertyPath: Buttons.Array.data[1]
+      value: Fire1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 1fbe93baad1a73e4faa13d3b1a925919, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1733664187
