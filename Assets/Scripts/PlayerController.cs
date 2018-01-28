@@ -26,6 +26,25 @@ public class PlayerController : MonoBehaviour {
 	BoxCollider2D collider;
 	Rigidbody2D rb;
 
+	enum AnimationEnum
+	{
+		None,
+		Idle,
+		Walk
+	}
+	AnimationEnum animation;
+	string AnimationEnumToName(AnimationEnum a)
+	{
+		switch (a) {
+		case AnimationEnum.None:
+			return "";
+		case AnimationEnum.Idle:
+			return "idle";
+		case AnimationEnum.Walk:
+			return "walk";
+		}
+		return "";
+	}
 	// Use this for initialization
 	void Start () {
 		collider = GetComponent<BoxCollider2D>();
@@ -35,6 +54,27 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		rb.velocity = new Vector2(8.0f*Input.GetAxis(HorizontalAxisControl),rb.velocity.y);
+		if (rb.velocity.x > 0)
+			transform.localScale = new Vector3 (1, 1, 1);
+		else if (rb.velocity.x < 0)
+			transform.localScale = new Vector3 (-1, 1, 1);
+
+		var armatureComponent = GetComponent<DragonBones.UnityArmatureComponent> ();
+		if (null != armatureComponent) {
+			AnimationEnum nextAnimation = AnimationEnum.None;
+			if (rb.velocity.x == 0)
+				nextAnimation = AnimationEnum.Idle;
+			else
+				nextAnimation = AnimationEnum.Walk;
+			if (animation != nextAnimation) {
+				animation = nextAnimation;
+				string animationName = AnimationEnumToName (animation);
+				if( string.IsNullOrEmpty(animationName) )
+					GetComponent<DragonBones.UnityArmatureComponent> ().animation.Stop();
+				else
+					GetComponent<DragonBones.UnityArmatureComponent> ().animation.Play(animationName);
+			}
+		}
 
 		CheckButton (JumpButtonControl, ActionEnum.Jump);
 		CheckButton (DrillButtonControl, ActionEnum.Drill);
