@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 	public string JumpButtonControl = "Jump";
 	public string DrillButtonControl = "Drill";
 	public Color TransmissionColor = Color.green;
+	public int MirrorHack = 1;
 
 	Collider2D collider;
 	Rigidbody2D rb;
@@ -55,9 +56,9 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		rb.velocity = new Vector2(3.0f*Input.GetAxis(HorizontalAxisControl),rb.velocity.y);
         if (rb.velocity.x < 0)
-            transform.localScale = new Vector3(-1*Mathf.Abs(transform.localScale.x),transform.localScale.y,transform.localScale.z);
+			transform.localScale = new Vector3(MirrorHack*-1*Mathf.Abs(transform.localScale.x),transform.localScale.y,transform.localScale.z);
         else if (rb.velocity.x > 0)
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x),transform.localScale.y,transform.localScale.z);
+            transform.localScale = new Vector3(MirrorHack*Mathf.Abs(transform.localScale.x),transform.localScale.y,transform.localScale.z);
 
 		var armatureComponent = GetComponent<DragonBones.UnityArmatureComponent> ();
 		if (null != armatureComponent) {
