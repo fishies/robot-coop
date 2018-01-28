@@ -23,15 +23,18 @@ public class PlayerController : MonoBehaviour {
 	public string DrillButtonControl = "Drill";
 	public Color TransmissionColor = Color.green;
 
+	BoxCollider2D collider;
+	Rigidbody2D rb;
+
 	// Use this for initialization
 	void Start () {
-		
+		collider = GetComponent<BoxCollider2D>();
+		rb = GetComponent<Rigidbody2D>();
 	}
 
 	// Update is called once per frame
 	void Update () {
-
-		GetComponent<Rigidbody2D>().AddForce(new Vector3(25*Input.GetAxis (HorizontalAxisControl),0,0));
+		rb.velocity = new Vector2(8.0f*Input.GetAxis(HorizontalAxisControl),rb.velocity.y);
 
 		CheckButton (JumpButtonControl, ActionEnum.Jump);
 		CheckButton (DrillButtonControl, ActionEnum.Drill);
@@ -85,7 +88,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void Jump(){
-		GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, 100));
+		if(collider.Raycast(Vector2.down,new RaycastHit2D[]{new RaycastHit2D()},collider.bounds.extents.y+0.125f) > 0)
+			rb.AddForce(Vector2.up * 320.0f);
 	}
-
 }
