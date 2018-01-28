@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: BoxyLady_Data
   m_EditorClassIdentifier: 
   dataName: BoxyLady
-  dragonBonesJSON: {fileID: 4900000, guid: 407e644134ad0164798b9b59b4ba992f, type: 3}
+  dragonBonesJSON: {fileID: 4900000, guid: 90bfe3b836a98c04990feb9e49d13d11, type: 3}
   textureAtlas:
-  - textureAtlasJSON: {fileID: 4900000, guid: eea69b91b115ff04aa70eaceaa2409d9, type: 3}
-    texture: {fileID: 2800000, guid: cbb092e5d982adc419d0b9d8fa16ec74, type: 3}
+  - textureAtlasJSON: {fileID: 4900000, guid: 467bc606f3896f74b97c7d0d6f86dcaf, type: 3}
+    texture: {fileID: 2800000, guid: 957afc32fc8fdf345b4f1808114a45df, type: 3}
     material: {fileID: 2100000, guid: c67ef3b8e2580994cb11b4ac6940f94b, type: 2}
     uiMaterial: {fileID: 0}
