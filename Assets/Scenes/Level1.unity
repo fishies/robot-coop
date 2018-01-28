@@ -1647,7 +1647,7 @@ Prefab:
         type: 2}
       propertyPath: walkSound
       value: 
-      objectReference: {fileID: 8300000, guid: b83bad17525e24c89be1c41b21f29095, type: 3}
+      objectReference: {fileID: 8300000, guid: c5e0ae3d5abb84b5ebd1be56f9344597, type: 3}
     - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
         type: 2}
       propertyPath: jumpSound
