@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50064496176342456}
   - component: {fileID: 61367083120436260}
   - component: {fileID: 114729295684281856}
+  - component: {fileID: 114595517493252702}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -88,6 +89,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.78, y: 3.26}
   m_EdgeRadius: 0
+--- !u!114 &114595517493252702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963599143608614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da2985705df35647a7735f39f07259d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unityData: {fileID: 0}
+  armatureName: 
+  isUGUI: 0
+  debugDraw: 0
+  animationName: 
+  _playTimes: 0
+  _timeScale: 1
+  _sortingMode: 0
+  _sortingLayerName: Default
+  _sortingOrder: 0
+  _zSpace: 0
+  _flipX: 0
+  _flipY: 0
+  _closeCombineMeshs: 0
 --- !u!114 &114729295684281856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,9 +128,9 @@ MonoBehaviour:
   Transmission: {fileID: 1076626150736676, guid: 2c9212b3599a72f46944a29a3ac708ae,
     type: 2}
   HorizontalAxisControl: Horizontal
-  Buttons:
-  - Jump
-  - Fire1
+  JumpButtonControl: Jump
+  DrillButtonControl: Drill
+  TransmissionColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!212 &212484452440538020
 SpriteRenderer:
   m_ObjectHideFlags: 1
