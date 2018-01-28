@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class TransmissionController : MonoBehaviour {
 
-	const float TransmissionZ = -1;
+	const float TransmissionZ = 1;
 	public GameObject SourcePlayer;
 	public float time = 0;
 	public float speed = 1f;
