@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class HazardMap : MonoBehaviour {
     public Vector2 spawnPoint;
-    Collider2D collider;
 
     // Use this for initialization
     void Start () {
-        collider = GetComponent<Collider2D>();
     }
     
     // Update is called once per frame
@@ -17,5 +15,6 @@ public class HazardMap : MonoBehaviour {
 
     void OnCollisionEnter2D (Collision2D c) {
         c.rigidbody.position = spawnPoint;
+        c.gameObject.GetComponent<AudioSource>().PlayOneShot(c.gameObject.GetComponent<PlayerController>().warpSound);
     }
 }

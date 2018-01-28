@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour {
 	AudioSource audio;
 	public AudioClip walkSound;
 	public AudioClip jumpSound;
+	public AudioClip warpSound;
 
 	enum AnimationEnum
 	{
