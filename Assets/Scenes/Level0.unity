@@ -1395,7 +1395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requirements:
   - {fileID: 1496576718}
-  sceneName: MainScene
+  sceneName: Level1
 --- !u!1001 &1363321782
 Prefab:
   m_ObjectHideFlags: 0
