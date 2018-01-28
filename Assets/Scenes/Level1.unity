@@ -1854,6 +1854,21 @@ Prefab:
       propertyPath: warpSound
       value: 
       objectReference: {fileID: 8300000, guid: 4cf5bef938cbe45edaad368ee926c808, type: 3}
+    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
+        type: 2}
+      propertyPath: drillSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 382b72287ef76457da1966867f1c146f, type: 3}
+    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
+        type: 2}
+      propertyPath: sendSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 891a0538f6b134b0b8df1ac7591e7203, type: 3}
+    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
+        type: 2}
+      propertyPath: recvSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a35b82feb42146a58092dab597eaa82, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ac1a0a567c184322b87d1ccf5f97864, type: 2}
   m_IsPrefabParent: 0
@@ -2465,7 +2480,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1787020142}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbe33ab7e087f4df3899ea1ab400f47a, type: 3}
   m_Name: 
@@ -2680,7 +2695,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1793067682}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c3094196bbb540ada5c5d6616565906, type: 3}
   m_Name: 
