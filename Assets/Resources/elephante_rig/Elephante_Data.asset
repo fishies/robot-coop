@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Elephante_Data
   m_EditorClassIdentifier: 
   dataName: Elephante
-  dragonBonesJSON: {fileID: 4900000, guid: c0fbf23a222b28f4b824b8fc522fca40, type: 3}
+  dragonBonesJSON: {fileID: 4900000, guid: 187ff6e276153c64cbffd329df1827f6, type: 3}
   textureAtlas:
-  - textureAtlasJSON: {fileID: 4900000, guid: df75a3d7f625b564d80d7521c7e39edc, type: 3}
-    texture: {fileID: 2800000, guid: 1c320b1bf2ca03c4fbe637674a0b9569, type: 3}
+  - textureAtlasJSON: {fileID: 4900000, guid: a1e2852e75d979444a6494ef51ed84d4, type: 3}
+    texture: {fileID: 2800000, guid: fbcdb8bed067e2a468f15db9c159ded1, type: 3}
     material: {fileID: 2100000, guid: c62fbd89e336594449a2f205640d9830, type: 2}
     uiMaterial: {fileID: 0}
