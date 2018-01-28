@@ -10,11 +10,12 @@ public class GoalMap : MonoBehaviour {
     //name of next scene
     public string sceneName;
 
-
+    AudioSource audio;
     Collider2D collider;
 
     // Use this for initialization
     void Start () {
+        audio = GetComponent<AudioSource>();
         collider = GetComponent<Collider2D>();
     }
     
@@ -24,8 +25,16 @@ public class GoalMap : MonoBehaviour {
         foreach(var req in requirements) {
             goalReached &= collider.IsTouching(req);
         }
-        if(goalReached) {
-            SceneManager.LoadSceneAsync(sceneName);
+        if(goalReached && !audio.isPlaying) {
+            foreach(var c in requirements) {
+                Destroy(c.gameObject.GetComponent<PlayerController>());
+            }
+            audio.Play();
+            Invoke("nextScene",audio.clip.length);
         }
+    }
+
+    void nextScene() {
+        SceneManager.LoadSceneAsync(sceneName);
     }
 }
