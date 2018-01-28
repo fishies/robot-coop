@@ -596,11 +596,11 @@ Tilemap:
     m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
---- !u!61 &429702750 stripped
-BoxCollider2D:
-  m_PrefabParentObject: {fileID: 61486369182963694, guid: 4185db2cca7473c40a64b246e37b19a1,
+--- !u!58 &594356847 stripped
+CircleCollider2D:
+  m_PrefabParentObject: {fileID: 58871769769929028, guid: 6ac1a0a567c184322b87d1ccf5f97864,
     type: 2}
-  m_PrefabInternal: {fileID: 2000227717}
+  m_PrefabInternal: {fileID: 1594518142}
 --- !u!1 &1273231922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,8 +1399,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   requirements:
-  - {fileID: 1880178977}
-  - {fileID: 429702750}
+  - {fileID: 594356847}
+  - {fileID: 1655656826}
   sceneName: Level1
 --- !u!1001 &1594518142
 Prefab:
@@ -1675,14 +1675,34 @@ Prefab:
       propertyPath: dirty
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
+        type: 2}
+      propertyPath: warpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4cf5bef938cbe45edaad368ee926c808, type: 3}
+    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
+        type: 2}
+      propertyPath: drillSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 382b72287ef76457da1966867f1c146f, type: 3}
+    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
+        type: 2}
+      propertyPath: sendSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 891a0538f6b134b0b8df1ac7591e7203, type: 3}
+    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
+        type: 2}
+      propertyPath: recvSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a35b82feb42146a58092dab597eaa82, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ac1a0a567c184322b87d1ccf5f97864, type: 2}
   m_IsPrefabParent: 0
---- !u!61 &1880178977 stripped
-BoxCollider2D:
-  m_PrefabParentObject: {fileID: 61493426183720962, guid: 6ac1a0a567c184322b87d1ccf5f97864,
+--- !u!58 &1655656826 stripped
+CircleCollider2D:
+  m_PrefabParentObject: {fileID: 58186023804603990, guid: 4185db2cca7473c40a64b246e37b19a1,
     type: 2}
-  m_PrefabInternal: {fileID: 1594518142}
+  m_PrefabInternal: {fileID: 2000227717}
 --- !u!1 &1924057443
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,6 +2101,26 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114446886053819110, guid: 4185db2cca7473c40a64b246e37b19a1,
+        type: 2}
+      propertyPath: warpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1253661a92692422a9e0db833351e3a2, type: 3}
+    - target: {fileID: 114446886053819110, guid: 4185db2cca7473c40a64b246e37b19a1,
+        type: 2}
+      propertyPath: drillSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 382b72287ef76457da1966867f1c146f, type: 3}
+    - target: {fileID: 114446886053819110, guid: 4185db2cca7473c40a64b246e37b19a1,
+        type: 2}
+      propertyPath: sendSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 891a0538f6b134b0b8df1ac7591e7203, type: 3}
+    - target: {fileID: 114446886053819110, guid: 4185db2cca7473c40a64b246e37b19a1,
+        type: 2}
+      propertyPath: recvSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a35b82feb42146a58092dab597eaa82, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4185db2cca7473c40a64b246e37b19a1, type: 2}
   m_IsPrefabParent: 0
