@@ -824,7 +824,7 @@ MonoBehaviour:
   HorizontalAxisControl: Horizontal2
   JumpButtonControl: Jump2
   DrillButtonControl: Drill2
-  TransmissionColor: {r: 0, g: 1, b: 0, a: 1}
+  TransmissionColor: {r: 0, g: 0.91724133, b: 1, a: 1}
   MirrorHack: -1
   walkSound: {fileID: 8300000, guid: c5e0ae3d5abb84b5ebd1be56f9344597, type: 3}
   jumpSound: {fileID: 8300000, guid: a9ef77446e7a84abdbec02e59879bcfa, type: 3}
