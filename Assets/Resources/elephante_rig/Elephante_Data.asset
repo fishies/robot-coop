@@ -17,4 +17,4 @@ MonoBehaviour:
   - textureAtlasJSON: {fileID: 4900000, guid: a1e2852e75d979444a6494ef51ed84d4, type: 3}
     texture: {fileID: 2800000, guid: fbcdb8bed067e2a468f15db9c159ded1, type: 3}
     material: {fileID: 2100000, guid: c62fbd89e336594449a2f205640d9830, type: 2}
-    uiMaterial: {fileID: 0}
+    uiMaterial: {fileID: 2100000, guid: bc8836819a7bc4c47b0178273f4715c6, type: 2}

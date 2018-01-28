@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 769222090}
   - component: {fileID: 769222089}
   - component: {fileID: 769222093}
+  - component: {fileID: 769222094}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -275,6 +276,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: Level0
+--- !u!114 &769222094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 769222088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876f255aea45a164ea1f35f92589956b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransmissionControllers: []
 --- !u!1001 &919053255
 Prefab:
   m_ObjectHideFlags: 0
@@ -625,6 +638,11 @@ Prefab:
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114446886053819110, guid: 4185db2cca7473c40a64b246e37b19a1,
+        type: 2}
+      propertyPath: transmissionManager
+      value: 
+      objectReference: {fileID: 769222094}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4185db2cca7473c40a64b246e37b19a1, type: 2}
   m_IsPrefabParent: 0
@@ -1112,6 +1130,11 @@ Prefab:
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
+        type: 2}
+      propertyPath: transmissionManager
+      value: 
+      objectReference: {fileID: 769222094}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ac1a0a567c184322b87d1ccf5f97864, type: 2}
   m_IsPrefabParent: 0

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 		Drill
 	}
 
+	public TransmissionManager transmissionManager;
 	public GameObject Transmission;
 
 	public string HorizontalAxisControl = "Horizontal";
@@ -125,7 +126,9 @@ public class PlayerController : MonoBehaviour {
 		CheckButton (DrillButtonControl, ActionEnum.Drill);
 
 		// Check for received transmissions
-		foreach (var transmission in TransmissionController.TransmissionControllers) {
+		if (null == transmissionManager.TransmissionControllers)
+			return;
+		foreach (var transmission in transmissionManager.TransmissionControllers) {
 			if (transmission.TransmittedAction.SourcePlayer == gameObject || transmission.TransmittedAction.Seen)
 				continue;
 			float distanceToSource = Vector3.Distance (transform.position, transmission.transform.position);
@@ -156,7 +159,7 @@ public class PlayerController : MonoBehaviour {
 			transmissionController.TransmittedAction = a;
 			transmissionController.color = TransmissionColor;
 
-			TransmissionController.AddTransmissionController (transmissionController);
+			transmissionManager.AddTransmissionController (transmissionController);
 		}
 	}
 

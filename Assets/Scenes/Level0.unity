@@ -2404,6 +2404,11 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
+        type: 2}
+      propertyPath: transmissionManager
+      value: 
+      objectReference: {fileID: 1924057450}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ac1a0a567c184322b87d1ccf5f97864, type: 2}
   m_IsPrefabParent: 0
@@ -2501,6 +2506,7 @@ GameObject:
   - component: {fileID: 1924057444}
   - component: {fileID: 1924057448}
   - component: {fileID: 1924057449}
+  - component: {fileID: 1924057450}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2662,6 +2668,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1924057450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1924057443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 876f255aea45a164ea1f35f92589956b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransmissionControllers: []
 --- !u!1001 &2000227717
 Prefab:
   m_ObjectHideFlags: 0
@@ -2967,6 +2985,11 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114446886053819110, guid: 4185db2cca7473c40a64b246e37b19a1,
+        type: 2}
+      propertyPath: transmissionManager
+      value: 
+      objectReference: {fileID: 1924057450}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4185db2cca7473c40a64b246e37b19a1, type: 2}
   m_IsPrefabParent: 0

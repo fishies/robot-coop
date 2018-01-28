@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class TransmissionController : MonoBehaviour {
 
+	public TransmissionManager manager;
 	const float TransmissionZ = 1;
 	public GameObject SourcePlayer;
 	public float time = 0;
@@ -94,15 +95,6 @@ public class TransmissionController : MonoBehaviour {
 			m.triangles = m_UnitRingMesh.triangles;
 	}
 
-	public static List<TransmissionController> TransmissionControllers = new List<TransmissionController>();
-	public static void AddTransmissionController(TransmissionController tc)
-	{
-		TransmissionControllers.Add (tc);
-	}
-	public static void RemoveTransmissionController(TransmissionController tc)
-	{
-		TransmissionControllers.Remove (tc);
-	}
 		
 	void Start ()
 	{
@@ -116,7 +108,7 @@ public class TransmissionController : MonoBehaviour {
 
 		// Kill after 10 seconds
 		if (Time.time - time > 10) {
-			RemoveTransmissionController (this);
+			manager.RemoveTransmissionController (this);
 			Destroy (gameObject);
 		}
 
