@@ -75,8 +75,12 @@ public class TransmissionController : MonoBehaviour {
 		if (null == m_UnitRingMesh)
 			InitUnitRingMesh ();
 		Mesh m = GetComponent<MeshFilter> ().mesh;
-		m.Clear ();
-		Vector3[] vertices = new Vector3[m_UnitRingMesh.vertices.Length];
+		bool fromScratch = false;
+		if (m.vertices.Length != m_UnitRingMesh.vertices.Length) {
+			fromScratch = true;
+			m.vertices = new Vector3[m_UnitRingMesh.vertices.Length];
+		}
+		Vector3[] vertices = m.vertices;
 		float innerRadius = radius - width;
 		for (int i = 0; i <= segments; ++i) {
 			vertices[2 * i] = radius * m_UnitRingMesh.vertices [2 * i];
@@ -86,7 +90,8 @@ public class TransmissionController : MonoBehaviour {
 			vertices[2 * i + 1].z = TransmissionZ;
 		}
 		m.vertices = vertices;
-		m.triangles = m_UnitRingMesh.triangles;
+		if( fromScratch )
+			m.triangles = m_UnitRingMesh.triangles;
 	}
 
 	public static List<TransmissionController> TransmissionControllers = new List<TransmissionController>();
