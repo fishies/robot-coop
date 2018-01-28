@@ -2486,11 +2486,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
         type: 2}
-      propertyPath: warpSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 4cf5bef938cbe45edaad368ee926c808, type: 3}
-    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
-        type: 2}
       propertyPath: drillSound
       value: 
       objectReference: {fileID: 8300000, guid: 382b72287ef76457da1966867f1c146f, type: 3}

@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour {
 			float transmissionDistance = transmission.TransmissionDistance ();
 			if (transmissionDistance > distanceToSource) {
 				//Debug.LogFormat ("See transmission: {0} > {1}", transmissionDistance, distanceToSource);
-				audio.PlayOneShot(recvSound);
+				audio.PlayOneShot(recvSound, .75f);
 				ActivateButton (transmission.TransmittedAction.Button);
 				transmission.TransmittedAction.Seen = true;
 			}

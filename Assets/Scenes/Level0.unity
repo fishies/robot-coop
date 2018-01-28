@@ -2111,31 +2111,6 @@ Prefab:
       propertyPath: dirty
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
-        type: 2}
-      propertyPath: warpSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 4cf5bef938cbe45edaad368ee926c808, type: 3}
-    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
-        type: 2}
-      propertyPath: drillSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 382b72287ef76457da1966867f1c146f, type: 3}
-    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
-        type: 2}
-      propertyPath: sendSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 891a0538f6b134b0b8df1ac7591e7203, type: 3}
-    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
-        type: 2}
-      propertyPath: recvSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 7a35b82feb42146a58092dab597eaa82, type: 3}
-    - target: {fileID: 114640553683683292, guid: 6ac1a0a567c184322b87d1ccf5f97864,
-        type: 2}
-      propertyPath: walkSound
-      value: 
-      objectReference: {fileID: 8300000, guid: c5e0ae3d5abb84b5ebd1be56f9344597, type: 3}
     - target: {fileID: 33784810599443492, guid: 6ac1a0a567c184322b87d1ccf5f97864,
         type: 2}
       propertyPath: m_Mesh
@@ -2768,31 +2743,6 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 114446886053819110, guid: 4185db2cca7473c40a64b246e37b19a1,
-        type: 2}
-      propertyPath: warpSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 1253661a92692422a9e0db833351e3a2, type: 3}
-    - target: {fileID: 114446886053819110, guid: 4185db2cca7473c40a64b246e37b19a1,
-        type: 2}
-      propertyPath: drillSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 382b72287ef76457da1966867f1c146f, type: 3}
-    - target: {fileID: 114446886053819110, guid: 4185db2cca7473c40a64b246e37b19a1,
-        type: 2}
-      propertyPath: sendSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 891a0538f6b134b0b8df1ac7591e7203, type: 3}
-    - target: {fileID: 114446886053819110, guid: 4185db2cca7473c40a64b246e37b19a1,
-        type: 2}
-      propertyPath: recvSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 7a35b82feb42146a58092dab597eaa82, type: 3}
-    - target: {fileID: 114446886053819110, guid: 4185db2cca7473c40a64b246e37b19a1,
-        type: 2}
-      propertyPath: walkSound
-      value: 
-      objectReference: {fileID: 8300000, guid: c5e0ae3d5abb84b5ebd1be56f9344597, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4185db2cca7473c40a64b246e37b19a1, type: 2}
   m_IsPrefabParent: 0
