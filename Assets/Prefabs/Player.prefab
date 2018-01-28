@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61367083120436260
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Transmission: {fileID: 1076626150736676, guid: 2c9212b3599a72f46944a29a3ac708ae,
     type: 2}
+  HorizontalAxisControl: Horizontal
   Buttons:
   - Jump
   - Fire1

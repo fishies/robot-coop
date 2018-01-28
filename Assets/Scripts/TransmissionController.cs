@@ -125,6 +125,8 @@ public class TransmissionController : MonoBehaviour {
 
 	public float TransmissionDistance()
 	{
+		if (time == 0)
+			return 0;
 		return speed * (Time.time - time);
 	}
 }

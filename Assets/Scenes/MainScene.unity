@@ -156,6 +156,11 @@ Prefab:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 114729295684281856, guid: 1fbe93baad1a73e4faa13d3b1a925919,
+        type: 2}
+      propertyPath: Buttons.Array.data[1]
+      value: Drill
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1fbe93baad1a73e4faa13d3b1a925919, type: 2}
   m_IsPrefabParent: 0
@@ -269,6 +274,21 @@ Prefab:
         type: 2}
       propertyPath: Buttons.Array.data[1]
       value: Fire1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114729295684281856, guid: 1fbe93baad1a73e4faa13d3b1a925919,
+        type: 2}
+      propertyPath: HorizontalAxisControl
+      value: Horizontal2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114729295684281856, guid: 1fbe93baad1a73e4faa13d3b1a925919,
+        type: 2}
+      propertyPath: JumpButtonControl
+      value: Jump2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114729295684281856, guid: 1fbe93baad1a73e4faa13d3b1a925919,
+        type: 2}
+      propertyPath: DrillButtonControl
+      value: Drill2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
