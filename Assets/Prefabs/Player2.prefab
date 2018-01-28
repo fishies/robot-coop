@@ -828,6 +828,10 @@ MonoBehaviour:
   MirrorHack: -1
   walkSound: {fileID: 8300000, guid: 0860d5cf8fad340998a9c825445d4556, type: 3}
   jumpSound: {fileID: 8300000, guid: a9ef77446e7a84abdbec02e59879bcfa, type: 3}
+  warpSound: {fileID: 0}
+  drillSound: {fileID: 8300000, guid: 382b72287ef76457da1966867f1c146f, type: 3}
+  sendSound: {fileID: 8300000, guid: 891a0538f6b134b0b8df1ac7591e7203, type: 3}
+  recvSound: {fileID: 8300000, guid: 7a35b82feb42146a58092dab597eaa82, type: 3}
 --- !u!114 &114448441506981720
 MonoBehaviour:
   m_ObjectHideFlags: 1
