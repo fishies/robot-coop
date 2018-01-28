@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour {
 	Collider2D collider;
 	Rigidbody2D rb;
 
+	AudioSource audio;
+	public AudioClip walkSound;
+	public AudioClip jumpSound;
+
 	enum AnimationEnum
 	{
 		None,
@@ -50,6 +54,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		collider = GetComponent<Collider2D>();
 		rb = GetComponent<Rigidbody2D>();
+		audio = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -59,6 +64,10 @@ public class PlayerController : MonoBehaviour {
 			transform.localScale = new Vector3(MirrorHack*-1*Mathf.Abs(transform.localScale.x),transform.localScale.y,transform.localScale.z);
         else if (rb.velocity.x > 0)
             transform.localScale = new Vector3(MirrorHack*Mathf.Abs(transform.localScale.x),transform.localScale.y,transform.localScale.z);
+
+        if(collider.Raycast(Vector2.down,new RaycastHit2D[]{new RaycastHit2D()},collider.bounds.extents.y+0.125f) > 0
+       	&& Input.GetAxis(HorizontalAxisControl) != 0.0f && !audio.isPlaying)
+       		audio.PlayOneShot(walkSound);
 
 		var armatureComponent = GetComponent<DragonBones.UnityArmatureComponent> ();
 		if (null != armatureComponent) {
@@ -113,6 +122,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+
 	public void ActivateButton(ActionEnum a)
 	{
 		switch (a) {
@@ -130,6 +140,9 @@ public class PlayerController : MonoBehaviour {
 
 	public void Jump(){
 		if(collider.Raycast(Vector2.down,new RaycastHit2D[]{new RaycastHit2D()},collider.bounds.extents.y+0.125f) > 0)
+		{
 			rb.AddForce(Vector2.up * 320.0f);
+			audio.PlayOneShot(jumpSound);
+		}
 	}
 }
