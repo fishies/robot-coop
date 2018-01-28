@@ -10,6 +10,8 @@ public class TransmissionController : MonoBehaviour {
 	public float speed = 1f;
 	public Color color = Color.green;
 
+	public PlayerController.Action TransmittedAction;
+
 	LineRenderer line;
 
 	static int segments = 50;
@@ -39,8 +41,16 @@ public class TransmissionController : MonoBehaviour {
 		m_UnitCircle = points.ToArray ();
 	}
 
-	public UnityEvent transmittedEvent;
-
+	public static List<TransmissionController> TransmissionControllers = new List<TransmissionController>();
+	public static void AddTransmissionController(TransmissionController tc)
+	{
+		TransmissionControllers.Add (tc);
+	}
+	public static void RemoveTransmissionController(TransmissionController tc)
+	{
+		TransmissionControllers.Remove (tc);
+	}
+		
 	void Start ()
 	{
 		line = gameObject.GetComponent<LineRenderer>();
@@ -48,7 +58,6 @@ public class TransmissionController : MonoBehaviour {
 		line.loop = true;
 		line.widthMultiplier = .1f;
 		line.startColor = line.endColor = color;
-
 		//line.useWorldSpace = false;
 		//CreatePoints ();
 	}
@@ -60,8 +69,10 @@ public class TransmissionController : MonoBehaviour {
 			time = Time.time;
 
 		// Loop for testing
-		if (Time.time - time > 10)
+		if (Time.time - time > 10) {
+			RemoveTransmissionController (this);
 			Destroy (gameObject);
+		}
 
 		UpdatePoints ();
 	}
@@ -69,12 +80,17 @@ public class TransmissionController : MonoBehaviour {
 	void UpdatePoints ()
 	{
 		Vector3[] points = new Vector3[segments+1];
-		float radius = speed * (Time.time - time);
+		float radius = TransmissionDistance();
 
 		Vector3[] unitCircle = UnitCircle;
 		for (int i = 0; i < points.Length; ++i)
 			points [i] = transform.position + unitCircle [i] * radius;
 
 		line.SetPositions (points);
+	}
+
+	public float TransmissionDistance()
+	{
+		return speed * (Time.time - time);
 	}
 }
