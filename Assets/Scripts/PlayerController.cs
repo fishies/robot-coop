@@ -35,25 +35,48 @@ public class PlayerController : MonoBehaviour {
 	public AudioClip sendSound;
 	public AudioClip recvSound;
 
+	float m_DrillStartTime = 0;
+
 	enum AnimationEnum
 	{
 		None,
 		Idle,
-		Walk
+		Walk,
+		Drill
 	}
 	AnimationEnum animation;
 	string AnimationEnumToName(AnimationEnum a)
 	{
 		switch (a) {
 		case AnimationEnum.None:
-			return "";
+			return string.Empty;
 		case AnimationEnum.Idle:
 			return "idle";
 		case AnimationEnum.Walk:
 			return "walk";
+		case AnimationEnum.Drill:
+			return "drill";
 		}
-		return "";
+		return string.Empty;
 	}
+	void SetAnimation(AnimationEnum a)
+	{
+		if (a == animation)
+			return;
+		
+		animation = a;
+
+		var armatureComponent = GetComponent<DragonBones.UnityArmatureComponent> ();
+		if (null == armatureComponent)
+			return;
+		
+		string animationName = AnimationEnumToName (animation);
+		if( string.IsNullOrEmpty(animationName) )
+			armatureComponent.animation.Stop();
+		else
+			armatureComponent.animation.Play(animationName);
+	}
+
 	// Use this for initialization
 	void Start () {
 		collider = GetComponent<Collider2D>();
@@ -63,36 +86,45 @@ public class PlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		rb.velocity = new Vector2(3.0f*Input.GetAxis(HorizontalAxisControl),rb.velocity.y);
-        if (rb.velocity.x < 0)
-			transform.localScale = new Vector3(MirrorHack*-1*Mathf.Abs(transform.localScale.x),transform.localScale.y,transform.localScale.z);
-        else if (rb.velocity.x > 0)
-            transform.localScale = new Vector3(MirrorHack*Mathf.Abs(transform.localScale.x),transform.localScale.y,transform.localScale.z);
+		// Stop drilling after x seconds
+		AnimationEnum nextAnimation = animation;
+		if (animation == AnimationEnum.Drill) {
+			const float SecondsToDrill = 3f;
+			if (Time.time - m_DrillStartTime > SecondsToDrill) {
+				m_DrillStartTime = 0;
+				nextAnimation = AnimationEnum.Idle;
+			}
+		}
 
-        if(collider.Raycast(Vector2.down,new RaycastHit2D[]{new RaycastHit2D()},collider.bounds.extents.y+0.125f) > 0
-       	&& Input.GetAxis(HorizontalAxisControl) != 0.0f && !audio.isPlaying)
-       		audio.PlayOneShot(walkSound);
+		// Move if able
+		if (nextAnimation != AnimationEnum.Drill) {
+			rb.velocity = new Vector2(3.0f*Input.GetAxis(HorizontalAxisControl),rb.velocity.y);
 
-		var armatureComponent = GetComponent<DragonBones.UnityArmatureComponent> ();
-		if (null != armatureComponent) {
-			AnimationEnum nextAnimation = AnimationEnum.None;
 			if (rb.velocity.x == 0)
 				nextAnimation = AnimationEnum.Idle;
 			else
 				nextAnimation = AnimationEnum.Walk;
-			if (animation != nextAnimation) {
-				animation = nextAnimation;
-				string animationName = AnimationEnumToName (animation);
-				if( string.IsNullOrEmpty(animationName) )
-					GetComponent<DragonBones.UnityArmatureComponent> ().animation.Stop();
-				else
-					GetComponent<DragonBones.UnityArmatureComponent> ().animation.Play(animationName);
-			}
 		}
 
+		// Look the correct way
+		if (rb.velocity.x < 0)
+			transform.localScale = new Vector3(MirrorHack*-1*Mathf.Abs(transform.localScale.x),transform.localScale.y,transform.localScale.z);
+		else if (rb.velocity.x > 0)
+			transform.localScale = new Vector3(MirrorHack*Mathf.Abs(transform.localScale.x),transform.localScale.y,transform.localScale.z);
+
+		// Apply the animation
+		SetAnimation (nextAnimation);
+
+		// Walking sound
+        if(collider.Raycast(Vector2.down,new RaycastHit2D[]{new RaycastHit2D()},collider.bounds.extents.y+0.125f) > 0
+       	&& Input.GetAxis(HorizontalAxisControl) != 0.0f && !audio.isPlaying)
+       		audio.PlayOneShot(walkSound);
+
+		// Check direct inputs
 		CheckButton (JumpButtonControl, ActionEnum.Jump);
 		CheckButton (DrillButtonControl, ActionEnum.Drill);
 
+		// Check for received transmissions
 		foreach (var transmission in TransmissionController.TransmissionControllers) {
 			if (transmission.TransmittedAction.SourcePlayer == gameObject || transmission.TransmittedAction.Seen)
 				continue;
@@ -100,11 +132,11 @@ public class PlayerController : MonoBehaviour {
 			float transmissionDistance = transmission.TransmissionDistance ();
 			if (transmissionDistance > distanceToSource) {
 				//Debug.LogFormat ("See transmission: {0} > {1}", transmissionDistance, distanceToSource);
+				audio.PlayOneShot(recvSound);
 				ActivateButton (transmission.TransmittedAction.Button);
 				transmission.TransmittedAction.Seen = true;
 			}
 		}
-		TransmissionController[] transmissions = FindObjectsOfType<TransmissionController> ();
 	}
 
 	void CheckButton(string button, ActionEnum action)
@@ -142,12 +174,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void Drill(){
-		audio.PlayOneShot(recvSound);
+		m_DrillStartTime = Time.time;
+		SetAnimation (AnimationEnum.Drill);
 		audio.PlayOneShot(drillSound);
 	}
 
 	public void Jump(){
-		audio.PlayOneShot(recvSound);
 		if(collider.Raycast(Vector2.down,new RaycastHit2D[]{new RaycastHit2D()},collider.bounds.extents.y+0.125f) > 0)
 		{
 			rb.AddForce(Vector2.up * 320.0f);
