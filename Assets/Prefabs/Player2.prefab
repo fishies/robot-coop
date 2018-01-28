@@ -192,8 +192,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1176912101521592}
   m_LocalRotation: {x: 0, y: 0, z: 0.0000019817012, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0.093, z: 0}
-  m_LocalScale: {x: 0.28, y: 0.32, z: 1}
+  m_LocalPosition: {x: 0.303, y: 0.093, z: 0}
+  m_LocalScale: {x: 0.22, y: 0.21, z: 1}
   m_Children:
   - {fileID: 4279075033943610}
   - {fileID: 4302267547706534}
@@ -725,9 +725,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.24}
+  m_Offset: {x: 0, y: -0.44}
   serializedVersion: 2
-  m_Radius: 0.87
+  m_Radius: 1.13
 --- !u!82 &82135850480878884
 AudioSource:
   m_ObjectHideFlags: 1
@@ -826,8 +826,12 @@ MonoBehaviour:
   DrillButtonControl: Drill2
   TransmissionColor: {r: 0, g: 1, b: 0, a: 1}
   MirrorHack: -1
-  walkSound: {fileID: 8300000, guid: 0860d5cf8fad340998a9c825445d4556, type: 3}
+  walkSound: {fileID: 8300000, guid: c5e0ae3d5abb84b5ebd1be56f9344597, type: 3}
   jumpSound: {fileID: 8300000, guid: a9ef77446e7a84abdbec02e59879bcfa, type: 3}
+  warpSound: {fileID: 8300000, guid: 68930dff2821340f28789bd43f2289ad, type: 3}
+  drillSound: {fileID: 8300000, guid: 382b72287ef76457da1966867f1c146f, type: 3}
+  sendSound: {fileID: 8300000, guid: 891a0538f6b134b0b8df1ac7591e7203, type: 3}
+  recvSound: {fileID: 8300000, guid: 7a35b82feb42146a58092dab597eaa82, type: 3}
 --- !u!114 &114448441506981720
 MonoBehaviour:
   m_ObjectHideFlags: 1
