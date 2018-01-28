@@ -5,40 +5,88 @@ using UnityEngine.Events;
 
 public class TransmissionController : MonoBehaviour {
 
+	const float TransmissionZ = -1;
 	public GameObject SourcePlayer;
 	public float time = 0;
 	public float speed = 1f;
+	public float width = .2f;
 	public Color color = Color.green;
 
 	public PlayerController.Action TransmittedAction;
 
-	LineRenderer line;
-
 	static int segments = 50;
-	static Vector3[] m_UnitCircle;
-	static Vector3[] UnitCircle {
-		get {
-			if (null == m_UnitCircle)
-				InitUnitCircle ();
-			return m_UnitCircle;
-		}
-	}
-	static void InitUnitCircle()
+
+	static void AddCirclePoints(List<Vector3> points, int segments)
 	{
 		float x;
 		float y;
-		float radiansPerSegment = 2 * Mathf.PI / (segments+1);
-		List<Vector3> points = new List<Vector3> ();
+		float radiansPerSegment = 2 * Mathf.PI / (segments);
 
-		for (int i = 0; i <= segments; i++)
+		for (int i = 0; i <= segments+1; i++)
 		{
 			float angle = i * radiansPerSegment;
 			x = Mathf.Cos (angle);
 			y = Mathf.Sin (angle);
 
-			points.Add(new Vector3(x,y,-1));
+			points.Add(new Vector3(x,y,TransmissionZ));
 		}
-		m_UnitCircle = points.ToArray ();
+	}
+
+	static Mesh m_UnitRingMesh;
+	static void InitUnitRingMesh()
+	{
+
+		List<Vector3> points = new List<Vector3> ();
+		AddCirclePoints (points, 2*segments);
+		Vector3[] vertices = points.ToArray();
+
+		//Vector2[] uv = new Vector2[vertices.Length];
+
+		int[] triangles = new int[3*(2*segments)];
+		for (int i = 0; i < segments; ++i) {
+			// Triangle 1
+			triangles [6 * i + 0] = 2 * i;
+			triangles [6 * i + 1] = 2 * i + 1;
+			triangles [6 * i + 2] = 2 * i + 2;
+
+			// Triangle 2
+			triangles [6 * i + 3] = 2 * i + 2;
+			triangles [6 * i + 4] = 2 * i + 1;
+			triangles [6 * i + 5] = 2 * i + 3;
+
+		}
+			
+		m_UnitRingMesh = new Mesh ();
+		m_UnitRingMesh.vertices = vertices;
+		//m_UnitRingMesh.uv = uv;
+		m_UnitRingMesh.triangles = triangles;
+	}
+	void UpdateRingMesh2(float radius)
+	{
+		Mesh m = GetComponent<MeshFilter> ().mesh;
+		m.Clear ();
+		Vector3[] vertices = new Vector3[]{ new Vector3 (0, 0, 0), new Vector3 (radius, 0, 0), new Vector3 (radius, radius, 0) };
+		int[] triangles = new int[]{ 0, 1, 2 };
+		m.vertices = vertices;
+		m.triangles = triangles;
+	}
+	void UpdateRingMesh(float radius)
+	{
+		if (null == m_UnitRingMesh)
+			InitUnitRingMesh ();
+		Mesh m = GetComponent<MeshFilter> ().mesh;
+		m.Clear ();
+		Vector3[] vertices = new Vector3[m_UnitRingMesh.vertices.Length];
+		float innerRadius = radius - width;
+		for (int i = 0; i <= segments; ++i) {
+			vertices[2 * i] = radius * m_UnitRingMesh.vertices [2 * i];
+			vertices[2 * i].z = TransmissionZ;
+
+			vertices[2 * i + 1] = innerRadius * m_UnitRingMesh.vertices [2 * i + 1];
+			vertices[2 * i + 1].z = TransmissionZ;
+		}
+		m.vertices = vertices;
+		m.triangles = m_UnitRingMesh.triangles;
 	}
 
 	public static List<TransmissionController> TransmissionControllers = new List<TransmissionController>();
@@ -53,13 +101,6 @@ public class TransmissionController : MonoBehaviour {
 		
 	void Start ()
 	{
-		line = gameObject.GetComponent<LineRenderer>();
-		line.positionCount = segments+1;
-		line.loop = true;
-		line.widthMultiplier = .1f;
-		line.startColor = line.endColor = color;
-		//line.useWorldSpace = false;
-		//CreatePoints ();
 	}
 
 	// Update is called once per frame
@@ -68,25 +109,13 @@ public class TransmissionController : MonoBehaviour {
 		if (time == 0)
 			time = Time.time;
 
-		// Loop for testing
+		// Kill after 10 seconds
 		if (Time.time - time > 10) {
 			RemoveTransmissionController (this);
 			Destroy (gameObject);
 		}
 
-		UpdatePoints ();
-	}
-
-	void UpdatePoints ()
-	{
-		Vector3[] points = new Vector3[segments+1];
-		float radius = TransmissionDistance();
-
-		Vector3[] unitCircle = UnitCircle;
-		for (int i = 0; i < points.Length; ++i)
-			points [i] = transform.position + unitCircle [i] * radius;
-
-		line.SetPositions (points);
+		UpdateRingMesh (TransmissionDistance());
 	}
 
 	public float TransmissionDistance()
