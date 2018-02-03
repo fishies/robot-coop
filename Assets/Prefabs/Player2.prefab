@@ -819,6 +819,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb209f71a3fab3740b6283f4a8598271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerIndex: 1
+  transmissionManager: {fileID: 0}
   Transmission: {fileID: 1076626150736676, guid: 2c9212b3599a72f46944a29a3ac708ae,
     type: 2}
   HorizontalAxisControl: Horizontal2

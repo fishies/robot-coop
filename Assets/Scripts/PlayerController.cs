@@ -16,12 +16,10 @@ public class PlayerController : MonoBehaviour {
 		Drill
 	}
 
+    public int PlayerIndex = 0;
 	public TransmissionManager transmissionManager;
 	public GameObject Transmission;
 
-	public string HorizontalAxisControl = "Horizontal";
-	public string JumpButtonControl = "Jump";
-	public string DrillButtonControl = "Drill";
 	public Color TransmissionColor = Color.green;
 	public int MirrorHack = 1;
 
@@ -97,9 +95,43 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		// Move if able
-		if (nextAnimation != AnimationEnum.Drill) {
-			rb.velocity = new Vector2(3.0f*Input.GetAxis(HorizontalAxisControl),rb.velocity.y);
+
+        float movementX = 0;
+        float movementY = 0;
+        bool jump = false;
+        bool drill = false;
+        // Use last device which provided input.
+        if (InControl.InputManager.Devices.Count == 0)
+            return;
+        if (PlayerIndex < InControl.InputManager.Devices.Count)
+        {
+            InControl.InputDevice device = InControl.InputManager.Devices[PlayerIndex];
+            movementX = device.LeftStickX;
+            if (device.DPadLeft)
+                movementX = -1;
+            else if (device.DPadRight)
+                movementX = 1;
+            movementY = device.LeftStickY;
+            if (device.DPadUp)
+                movementY = 1;
+            else if (device.DPadDown)
+                movementY = -1;
+            jump = device.Action1.WasPressed;
+            drill = device.Action3.WasPressed;
+        }
+        else
+        {
+            InControl.InputDevice device = InControl.InputManager.Devices[0];
+            movementX = device.RightStickX;
+            movementY = device.RightStickY;
+            jump = device.Action2.WasPressed;
+            drill = device.Action4.WasPressed;
+
+        }
+
+        // Move if able
+        if (nextAnimation != AnimationEnum.Drill) {
+			rb.velocity = new Vector2(3.0f*movementX,rb.velocity.y);
 
 			if (rb.velocity.x == 0)
 				nextAnimation = AnimationEnum.Idle;
@@ -118,12 +150,18 @@ public class PlayerController : MonoBehaviour {
 
 		// Walking sound
         if(collider.Raycast(Vector2.down,new RaycastHit2D[]{new RaycastHit2D()},collider.bounds.extents.y+0.125f) > 0
-       	&& Input.GetAxis(HorizontalAxisControl) != 0.0f && !audio.isPlaying)
+       	&& movementX != 0.0f && !audio.isPlaying)
        		audio.PlayOneShot(walkSound);
 
-		// Check direct inputs
-		CheckButton (JumpButtonControl, ActionEnum.Jump);
-		CheckButton (DrillButtonControl, ActionEnum.Drill);
+
+        //if( inputDevice.GetControl(InControl.InputControlType))
+        // Rotate target object with left stick.
+        //transform.Rotate(Vector3.down, 500.0f * Time.deltaTime * inputDevice.LeftStickX, Space.World);
+        //transform.Rotate(Vector3.right, 500.0f * Time.deltaTime * inputDevice.LeftStickY, Space.World);
+
+        // Check direct inputs
+        CheckButton(ActionEnum.Jump, jump);
+        CheckButton(ActionEnum.Drill, drill);
 
 		// Check for received transmissions
 		if (null == transmissionManager.TransmissionControllers)
@@ -142,10 +180,14 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void CheckButton(string button, ActionEnum action)
+    void CheckButton()
+    {
+
+    }
+
+	void CheckButton(ActionEnum action, bool pressed)
 	{
-		if (Input.GetButtonDown (button)) {
-			Debug.LogFormat ("Button pressed: {0}", button);
+		if (pressed) {
 			//GetComponent<PlayerController> ().ActivateButton (action);
 
 			audio.PlayOneShot(sendSound);

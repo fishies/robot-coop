@@ -16,8 +16,7 @@ public class NextSceneController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Escape))
 			Application.Quit ();
 
-		if (Input.GetButtonDown("Start") || Input.GetButtonDown("Start2")) {
+        if( InControl.InputManager.ActiveDevice.GetControl(InControl.InputControlType.Start) )
 			UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(SceneName);
-		}
 	}
 }
